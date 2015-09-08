@@ -46,7 +46,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('html',function(){
-    gulp.src('./assets/*.html')
+    gulp.src('./assets/**/*.html')
     .pipe(gulp.dest('./public/'))
     .pipe(connect.reload());
 });
@@ -74,6 +74,17 @@ gulp.task('jsmods',function(){
     .pipe(uglify())
     .pipe(gulp.dest('./public/js/modules/'))
     .pipe(connect.reload());
+
+    gulp.src('./assets/js/Actions/**/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('./public/js/Actions/'))
+    .pipe(connect.reload());
+
+    gulp.src('./assets/js/angularControllers/**/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('./public/js/angularControllers/'))
+    .pipe(connect.reload());
+
 });
 
 gulp.task('img',function(){
@@ -98,10 +109,12 @@ gulp.task('connect', function() {
 // Watch
 gulp.task('watch',function(){
     gulp.watch("./assets/css/**/*.css", ["css"]);
-    gulp.watch("./assets/*.html", ["html"]);
+    gulp.watch("./assets/**/*.html", ["html"]);
     gulp.watch("./assets/js/*.js", ["js"]);
     gulp.watch("./assets/js/libs/*.js", ["jslibs"]);
     gulp.watch("./assets/js/modules/**/*.js", ["jsmods"]);
+    gulp.watch("./assets/js/angularControllers/**/*.js", ["jsmods"]);
+    gulp.watch("./assets/js/Actions/**/*.js", ["jsmods"]);
 });
 
 // Default

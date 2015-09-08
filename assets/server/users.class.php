@@ -75,8 +75,8 @@ class Users{
     $myName = $this->getName($myId);
     $opLog = $this->getOpponent($myName);
     $opId = $this->names[$opLog];
-    $this->send($myId, 'fightAccepted');
-    $this->send($opId, 'fightAccepted');
+    $this->send($myId, 'fightAccepted', $opLog);
+    $this->send($opId, 'fightAccepted', $myName);
 
     $this->setMotionOrder($myId);
   }

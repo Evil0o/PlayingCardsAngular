@@ -1,0 +1,6 @@
+<ul id="players" class="collection" template="userListTpl">
+	<li class="player collection-item dismissable {{isMe(user.name)}}" data-ng-repeat="user in userlist" data-ng-controller="userlistCtrl">
+		<span class="name">{{user.name}}</span>
+		<span class="fightButton secondary-content" ng-click="letsFight(user.name)"></span>
+	</li>
+</ul>

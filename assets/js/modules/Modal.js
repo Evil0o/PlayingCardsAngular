@@ -1,4 +1,4 @@
-define(['Actions'],function(Actions){
+define([],function(){
 
 	var Modal = {
 		close: function(){

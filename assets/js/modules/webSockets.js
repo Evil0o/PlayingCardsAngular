@@ -1,4 +1,4 @@
-define(["Actions", "Modal"],function(Actions, Modal){
+define(["Directive"],function(Directive){
 	console.log('webSockets required');
 
 	// Config
@@ -10,12 +10,13 @@ define(["Actions", "Modal"],function(Actions, Modal){
 	}
 	socket.onclose = function (e){
 		console.log('Соединение прервано!');
-		Modal.box('Соединение прервано!');
+		Directive.run('connectionLost');
 	}
 	socket.onmessage = function (e){
 		if (typeof e.data === "string"){
 			var request = JSON.parse(e.data);
-			Actions.exec(request.function,request.args);
+			console.log('request',request.function);
+			Directive.run(request.function,request.args);
 		};
 	}
 
